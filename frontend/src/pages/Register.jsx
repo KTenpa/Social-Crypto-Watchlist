@@ -2,6 +2,10 @@ import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useAuth } from '../state/AuthContext.jsx'
 
+/**
+ * @file Register.jsx
+ * @description Registration page for new users. Handles account creation and navigation to dashboard.
+ */
 export default function Register() {
   const { register } = useAuth()
   const navigate = useNavigate()

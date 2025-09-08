@@ -2,6 +2,10 @@ import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useAuth } from '../state/AuthContext.jsx'
 
+/**
+ * @file Login.jsx
+ * @description Login page for existing users. Handles authentication and navigation to dashboard.
+ */
 export default function Login() {
   const { login } = useAuth()
   const navigate = useNavigate()

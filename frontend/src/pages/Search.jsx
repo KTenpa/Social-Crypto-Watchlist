@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react'
 import api from '../utils/apiClient.js'
 
+/**
+ * @file Search.jsx
+ * @description Allows users to search for coins via the CoinGecko API and add them to their watchlist.
+ */
 export default function Search() {
   const [q, setQ] = useState('')
   const [results, setResults] = useState([])

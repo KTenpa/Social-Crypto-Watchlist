@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react'
 import api from '../utils/apiClient.js'
 import { useAuth } from '../state/AuthContext.jsx'
 
+/**
+ * @file Dashboard.jsx
+ * @description Displays the logged-in user's watchlist. Allows removing coins from watchlist.
+ */
 export default function Dashboard() {
   const { user } = useAuth()
   const [watchlist, setWatchlist] = useState([])

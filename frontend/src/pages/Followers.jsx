@@ -2,6 +2,11 @@ import { useEffect, useState } from 'react';
 import { useAuth } from '../state/AuthContext.jsx';
 import api from '../utils/apiClient.js';
 
+/**
+ * @file Followers.jsx
+ * @description Displays followers and following lists. Provides search functionality and allows
+ *              following/unfollowing users as well as removing followers.
+ */
 export default function Followers() {
   const { user } = useAuth();
   const [query, setQuery] = useState('');

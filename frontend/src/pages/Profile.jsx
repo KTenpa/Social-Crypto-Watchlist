@@ -3,6 +3,10 @@ import { useParams } from 'react-router-dom'
 import api from '../utils/apiClient.js'
 import { useAuth } from '../state/AuthContext.jsx'
 
+/**
+ * @file Profile.jsx
+ * @description Displays a user's profile and their watchlist. Differentiates between self and other users.
+ */
 export default function Profile() {
   const { user } = useAuth()
   const { userId } = useParams()
