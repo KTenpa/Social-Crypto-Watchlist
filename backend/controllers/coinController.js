@@ -2,9 +2,11 @@ const axios = require('axios');
 const Coin = require('../models/Coins');
 const ErrorResponse = require('../utils/errorResponse');
 
-// @desc    Search coins from CoinGecko
-// @route   GET /api/v1/coins/search/:query
-// @access  Public
+/**
+ * Search coins from CoinGecko.
+ * @route GET /coins/search/:query
+ * @access Public
+ */
 exports.searchCoins = async (req, res, next) => {
   try {
     const { query } = req.params;
@@ -21,9 +23,11 @@ exports.searchCoins = async (req, res, next) => {
   }
 };
 
-// @desc    Get all coins from database
-// @route   GET /api/v1/coins
-// @access  Public
+/**
+ * Get all coins from database.
+ * @route GET /coins
+ * @access Public
+ */
 exports.getCoins = async (req, res, next) => {
   try {
     const coins = await Coin.findAll();
@@ -37,9 +41,11 @@ exports.getCoins = async (req, res, next) => {
   }
 };
 
-// @desc    Get single coin from database
-// @route   GET /api/v1/coins/:id
-// @access  Public
+/**
+ * Get single coin by ID.
+ * @route GET /coins/:id
+ * @access Public
+ */
 exports.getCoin = async (req, res, next) => {
   try {
     const coin = await Coin.findById(req.params.id);
@@ -57,9 +63,11 @@ exports.getCoin = async (req, res, next) => {
   }
 };
 
-// @desc    Add coin to database
-// @route   POST /api/v1/coins
-// @access  Private (you might want to protect this)
+/**
+ * Add a new coin to database.
+ * @route POST /coins
+ * @access Private
+ */
 exports.addCoin = async (req, res, next) => {
   try {
     const { id, symbol, name, image_url } = req.body;

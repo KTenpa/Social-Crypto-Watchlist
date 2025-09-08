@@ -1,6 +1,11 @@
 const Watchlist = require('../models/Watchlist');
 const ErrorResponse = require('../utils/errorResponse');
 
+/**
+ * Get the authenticated user's watchlist.
+ * @route GET /watchlist
+ * @access Private
+ */
 exports.getWatchlist = async (req, res, next) => {
   try {
     const coins = await Watchlist.getByUser(req.user.id);
@@ -10,7 +15,12 @@ exports.getWatchlist = async (req, res, next) => {
   }
 };
 
-
+/**
+ * Add a coin to the authenticated user's watchlist.
+ * @route POST /watchlist
+ * @access Private
+ * @param {Object} req.body - coin object containing coin id, symbol, name, image_url
+ */
 exports.addToWatchlist = async (req, res, next) => {
   try {
     const { coin } = req.body; // destructure the coin from the request body
@@ -26,7 +36,11 @@ exports.addToWatchlist = async (req, res, next) => {
   }
 };
 
-
+/**
+ * Remove a coin from the authenticated user's watchlist.
+ * @route DELETE /watchlist/:coin_id
+ * @access Private
+ */
 
 exports.removeFromWatchlist = async (req, res, next) => {
   try {

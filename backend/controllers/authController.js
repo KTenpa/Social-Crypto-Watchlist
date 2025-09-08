@@ -1,6 +1,12 @@
 const User = require('../models/User');
 const ErrorResponse = require('../utils/errorResponse');
 
+/**
+ * Registers a new user.
+ * @route POST /auth/register
+ * @access Public
+ * @param {Object} req.body - name, email, password
+ */
 exports.register = async (req, res, next) => {
   console.log('Register body:', req.body);
   const { name, email, password } = req.body;
@@ -35,6 +41,12 @@ exports.register = async (req, res, next) => {
   }
 };
 
+/**
+ * Logs in an existing user.
+ * @route POST /auth/login
+ * @access Public
+ * @param {Object} req.body - email, password
+ */
 exports.login = async (req, res, next) => {
   const { email, password } = req.body;
 
@@ -75,6 +87,12 @@ exports.login = async (req, res, next) => {
   }
 };
 
+
+/**
+ * Gets the authenticated user's profile.
+ * @route GET /auth/me
+ * @access Private
+ */
 exports.getMe = async (req, res, next) => {
   try {
     const user = await User.findById(req.user.id);
@@ -88,7 +106,9 @@ exports.getMe = async (req, res, next) => {
   }
 };
 
-// Error handler middleware (add this to your app.js)
+/**
+ * Global error handler middleware.
+ */
 exports.errorHandler = (err, req, res, next) => {
   const statusCode = err.statusCode || 500;
   const message = err.message || 'Internal Server Error';

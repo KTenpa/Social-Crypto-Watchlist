@@ -2,7 +2,11 @@ const Follower = require('../models/Follower');
 const User = require('../models/User');
 const ErrorResponse = require('../utils/errorResponse');
 
-// Follow a user
+/**
+ * Follow another user.
+ * @route POST /follow/:userId
+ * @access Private
+ */
 exports.followUser = async (req, res, next) => {
   try {
     const targetId = parseInt(req.params.userId);
@@ -15,7 +19,11 @@ exports.followUser = async (req, res, next) => {
   }
 };
 
-// Unfollow a user
+/**
+ * Unfollow a user.
+ * @route DELETE /follow/:userId
+ * @access Private
+ */
 exports.unfollowUser = async (req, res, next) => {
   try {
     const targetId = parseInt(req.params.userId);
@@ -26,7 +34,11 @@ exports.unfollowUser = async (req, res, next) => {
   }
 };
 
-// Get followers of a user
+/**
+ * Get followers of a user.
+ * @route GET /follow/followers/:userId
+ * @access Private
+ */
 exports.getFollowers = async (req, res, next) => {
   try {
     const followers = await Follower.getFollowers(req.params.userId);
@@ -36,7 +48,11 @@ exports.getFollowers = async (req, res, next) => {
   }
 };
 
-// Get following of a user
+/**
+ * Get following of a user.
+ * @route GET /follow/following/:userId
+ * @access Private
+ */
 exports.getFollowing = async (req, res, next) => {
   try {
     const following = await Follower.getFollowing(req.params.userId);
@@ -46,7 +62,11 @@ exports.getFollowing = async (req, res, next) => {
   }
 };
 
-// Remove a follower
+/**
+ * Remove a follower from current user.
+ * @route DELETE /follow/remove/:userId
+ * @access Private
+ */
 exports.removeFollower = async (req, res, next) => {
   try {
     const followerId = parseInt(req.params.userId);
@@ -58,7 +78,11 @@ exports.removeFollower = async (req, res, next) => {
   }
 };
 
-// Search users
+/**
+ * Search users by name or email.
+ * @route GET /follow/search/:query
+ * @access Private
+ */
 exports.searchUsers = async (req, res, next) => {
   try {
     const q = req.params.query;
