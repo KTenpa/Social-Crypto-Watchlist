@@ -2,6 +2,7 @@ const User = require('../models/User');
 const ErrorResponse = require('../utils/errorResponse');
 
 exports.register = async (req, res, next) => {
+  console.log('Register body:', req.body);
   const { name, email, password } = req.body;
 
   try {

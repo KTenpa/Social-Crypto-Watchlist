@@ -1,5 +1,5 @@
 -- Insert some test users
-INSERT INTO users (username, email, password_hash, is_public)
+INSERT INTO users (name, email, password, is_public)
 VALUES 
 ('alice', 'alice@example.com', 'hashedpassword1', true),
 ('bob', 'bob@example.com', 'hashedpassword2', true),

@@ -10,9 +10,11 @@ exports.getWatchlist = async (req, res, next) => {
   }
 };
 
+
 exports.addToWatchlist = async (req, res, next) => {
   try {
-    const rowCount = await Watchlist.add(req.user.id, req.body);
+    const { coin } = req.body; // destructure the coin from the request body
+    const rowCount = await Watchlist.add(req.user.id, coin);
 
     if (rowCount === 0) {
       return res.status(200).json({ success: true, message: 'Coin already in watchlist' });
@@ -23,6 +25,8 @@ exports.addToWatchlist = async (req, res, next) => {
     next(new ErrorResponse('Error adding coin to watchlist', 500));
   }
 };
+
+
 
 exports.removeFromWatchlist = async (req, res, next) => {
   try {
