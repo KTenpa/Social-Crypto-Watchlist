@@ -25,7 +25,7 @@ export default function Dashboard() {
 
   const remove = async (coin_id) => {
     const original = watchlist
-    setWatchlist(watchlist.filter(c => c.coin_id !== coin_id))
+    setWatchlist(watchlist.filter(c => c.id !== coin_id))
     try {
       await api.delete(`/watchlist/${coin_id}`)
     } catch {
@@ -45,15 +45,15 @@ export default function Dashboard() {
       ) : (
         <ul className="list">
           {watchlist.map((c) => (
-            <li key={c.coin_id} className="row">
+            <li key={c.id} className="row">
               <div className="row-left">
                 {c.image_url && <img src={c.image_url} alt={c.name} width="24" height="24" />}
                 <div>
                   <div className="title">{c.name} ({c.symbol?.toUpperCase()})</div>
-                  <div className="muted">{c.coin_id}</div>
+                  <div className="muted">{c.id}</div>
                 </div>
               </div>
-              <button className="btn danger" onClick={() => remove(c.coin_id)}>Remove</button>
+              <button className="btn danger" onClick={() => remove(c.id)}>Remove</button>
             </li>
           ))}
         </ul>

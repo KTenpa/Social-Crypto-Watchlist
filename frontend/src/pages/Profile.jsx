@@ -36,12 +36,12 @@ export default function Profile() {
       <h3>Watchlist</h3>
       <ul className="list">
         {watchlist.map((c) => (
-          <li key={c.coin_id} className="row">
+          <li key={c.id} className="row">
             <div className="row-left">
               {c.image_url && <img src={c.image_url} alt={c.name} width="24" height="24" />}
               <div>
                 <div className="title">{c.name} ({c.symbol?.toUpperCase()})</div>
-                <div className="muted">{c.coin_id}</div>
+                <div className="muted">{c.id}</div>
               </div>
             </div>
           </li>
