@@ -1,3 +1,35 @@
+/**
+ * Navbar.jsx
+ * ----------------
+ * Navigation bar component displayed on all pages.
+ *
+ * Features:
+ *  - Shows links to different pages based on authentication state
+ *  - Authenticated users see links to:
+ *      - Dashboard (My Watchlist)
+ *      - Search
+ *      - Followers
+ *      - Profile
+ *      - Logout button
+ *  - Unauthenticated users see links to:
+ *      - Login
+ *      - Register (Sign up)
+ *  - Handles logout by clearing auth context and redirecting to /login
+ *
+ * Usage:
+ *  Render <Navbar /> inside your main layout or App component:
+ *
+ *    import Navbar from './components/Navbar.jsx';
+ *    
+ *    function App() {
+ *      return (
+ *        <div>
+ *          <Navbar />
+ *          // other components
+ *        </div>
+ *      );
+ *    }
+ */
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../state/AuthContext.jsx'
 
