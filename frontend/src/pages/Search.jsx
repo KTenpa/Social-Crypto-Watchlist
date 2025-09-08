@@ -35,7 +35,7 @@ export default function Search() {
       }).catch(() => {}) // ignore 400 "already exists"
 
       // 2) add to watchlist
-      const resp = await api.post('/watchlist', { coin_id: coin.id })
+      const resp = await api.post('/watchlist', { coin })
       setMsg(resp.data?.message || 'Added to watchlist')
     } catch (err) {
       setMsg(err?.response?.data?.error || 'Failed to add')

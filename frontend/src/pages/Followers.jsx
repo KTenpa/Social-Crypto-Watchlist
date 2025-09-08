@@ -52,7 +52,7 @@ export default function Followers() {
         <ul className="list">
           {followers.map((u) => (
             <li key={u.id} className="row">
-              <div className="title">{u.name || u.username || `User ${u.id}`}</div>
+              <div className="title">{u.name || `User ${u.id}`}</div>
               {user?.id !== u.id && (
                 <button className="btn"
                   onClick={() => toggleFollow(u.id, true)}
@@ -70,7 +70,7 @@ export default function Followers() {
         <h3>Following</h3>
         <ul className="list">
           {following.map((u) => {
-            const display = u.name || u.username || `User ${u.id}`
+            const display = u.name || `User ${u.id}`
             return (
               <li key={u.id} className="row">
                 <div className="title">{display}</div>
