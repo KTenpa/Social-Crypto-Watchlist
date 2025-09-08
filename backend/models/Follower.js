@@ -1,6 +1,15 @@
 const pool = require('../config/db');
 
+/**
+ * Follower model for managing user follow relationships.
+ */
 class Follower {
+  /**
+   * Follow a user.
+   * @param {number} followerId - ID of the user following
+   * @param {number} followingId - ID of the user being followed
+   * @returns {Promise}
+   */
   static async follow(followerId, followingId) {
     const query = `
       INSERT INTO followers (follower_id, following_id)
@@ -10,6 +19,12 @@ class Follower {
     return pool.query(query, [followerId, followingId]);
   }
 
+  /**
+   * Unfollow a user.
+   * @param {number} followerId
+   * @param {number} followingId
+   * @returns {Promise}
+   */
   static async unfollow(followerId, followingId) {
     const query = `
       DELETE FROM followers
@@ -18,6 +33,11 @@ class Follower {
     return pool.query(query, [followerId, followingId]);
   }
 
+  /**
+   * Get users that a user is following.
+   * @param {number} userId
+   * @returns {Promise<Object[]>} Array of users
+   */
   static async getFollowing(userId) {
     const query = `
       SELECT u.id, u.name, u.email
@@ -29,6 +49,11 @@ class Follower {
     return rows;
   }
 
+  /**
+   * Get followers of a user.
+   * @param {number} userId
+   * @returns {Promise<Object[]>} Array of users
+   */
   static async getFollowers(userId) {
     const query = `
       SELECT u.id, u.name, u.email

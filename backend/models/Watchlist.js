@@ -1,7 +1,15 @@
 const pool = require('../config/db');
 
+/**
+ * Watchlist model for managing user coin watchlists.
+ */
 class Watchlist {
-  
+  /**
+   * Add a coin to a user's watchlist.
+   * @param {number} userId
+   * @param {Object} coin - Coin object from CoinGecko
+   * @returns {Promise<number>} Number of rows affected
+   */
   static async add(userId, coin) {
     console.log("Raw coin object received in Watchlist.add:", coin);
     // Map CoinGecko fields into DB schema
@@ -34,9 +42,12 @@ class Watchlist {
     }
   }
   
-  
-  
-
+  /**
+   * Remove a coin from a user's watchlist.
+   * @param {number} userId
+   * @param {string} coinId
+   * @returns {Promise}
+   */
   static async remove(userId, coinId) {
     return pool.query(
       `DELETE FROM watchlist WHERE user_id = $1 AND coin_id = $2`,
@@ -44,6 +55,11 @@ class Watchlist {
     );
   }
 
+  /**
+   * Get all coins in a user's watchlist.
+   * @param {number} userId
+   * @returns {Promise<Object[]>} Array of coins
+   */
   static async getByUser(userId) {
     const { rows } = await pool.query(
       `SELECT coins.*
