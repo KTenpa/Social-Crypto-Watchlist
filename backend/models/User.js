@@ -46,9 +46,17 @@ class User {
       expiresIn: process.env.JWT_EXPIRE,
     });
   }
+
+  // search method
+  static async search(query) {
+    const { rows } = await pool.query(
+      `SELECT id, name, email FROM users WHERE name ILIKE $1 OR email ILIKE $1 LIMIT 20`,
+      [`%${query}%`]
+    );
+    return rows;
+  }
 }
 
-// Create users table if it doesn't exist (only in development)
 if (process.env.NODE_ENV !== 'test') {
   (async () => {
     try {
