@@ -1,3 +1,28 @@
+/**
+ * AuthContext.jsx
+ * ----------------
+ * Provides authentication context and hooks for the frontend React application.
+ *
+ * Exports:
+ *  - AuthProvider: React context provider that manages authentication state (user, token, loading)
+ *  - useAuth: Custom hook to access authentication state and actions
+ *
+ * Features:
+ *  - Persist auth token in localStorage
+ *  - Bootstrap user state on page load
+ *  - Login, register, and logout functions
+ *
+ * Usage:
+ *  Wrap your application with <AuthProvider> at the root level:
+ * 
+ *    <AuthProvider>
+ *      <App />
+ *    </AuthProvider>
+ *
+ *  Access auth state in any component:
+ *
+ *    const { user, login, logout, register, loading } = useAuth();
+ */
 import { createContext, useContext, useEffect, useState } from 'react'
 import api from '../utils/apiClient.js'
 
